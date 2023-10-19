@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste Utilisateurs{% endblock %}
+
+{% block body %}
+    <table class="table mt-3">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Username</th>
+            <th scope="col">Roles</th>
+        </tr>
+    </thead>
+    <tbody>
+        <form name="roles_form" method="post" action="{{ path('app_user_save_roles') }}">
+            {% for user in users %}
+                <tr>
+                    <th>{{ user.id }}</th>
+                    <td style="{{ user is same as app.user ? 'color: green;' : '' }}">{{ user.username }} {{ user is same as app.user ? '(Vous)' : '' }}</td>
+                    <td>
+                            {% for role in SECURITY_ROLES %}
+                                <div class="form-check form-switch">
+                                    <input type="checkbox" name="user_roles[{{ user.id }}][{{ role }}]" value="1" {{ role in user.roles ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="user_roles[{{ user.id }}][{{ role }}]">{{role}}</label>
+                                </div>
+                            {% endfor %}
+                    </td>
+                </tr>
+            {% endfor %}
+            <button type="submit" class="btn btn-success float-right mt-3">Enregistrer</button>
+        </form>
+    </tbody>
+    </table>
+{% endblock %}

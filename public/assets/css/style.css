@@ -1,0 +1,9 @@
+.backgroundnavimage{
+    background-image: url("../../assets/img/nav-test.png");
+    background-size: cover;
+}
+
+.success {
+    background-color: #4CAF50;
+    color: #fff;
+}
