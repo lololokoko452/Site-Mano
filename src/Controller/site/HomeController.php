@@ -39,9 +39,7 @@ class HomeController extends AbstractController
         }
 
 
-        return $this->render('emails/email_send.html.twig', [
-
-        ]);
+        return $this->redirectToRoute('app_home');
 
     }
 }
