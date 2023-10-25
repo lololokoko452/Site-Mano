@@ -7,8 +7,6 @@
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
-            <!-- Sweet Alert css-->
-            <link href="assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
             {% if app.request.attributes.get('_route') == 'app_home' %}
                 <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" />
                 <noscript><link rel="stylesheet" href="{{ asset('assets/css/noscript.css') }}" /></noscript>
